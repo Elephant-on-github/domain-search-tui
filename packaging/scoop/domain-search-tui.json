@@ -6,7 +6,7 @@
   "architecture": {
     "64bit": {
       "url": "https://github.com/Elephant-on-github/domain-search-tui/releases/download/v1.0.0/domain_search_aggregator_tui-x86_64-pc-windows-msvc.zip",
-      "hash": "TODO"
+      "hash": "68c26d8fa49ca6f1e444bce88bbdfc4f96ad1589eb447025b5e791784468d8e2"
     }
   },
   "bin": "domain_search_aggregator_tui.exe",
