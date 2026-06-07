@@ -1,0 +1,21 @@
+{
+  "version": "1.0.0",
+  "description": "Terminal app that checks domain availability across 20 TLDs and compares registrar prices",
+  "homepage": "https://github.com/Elephant-on-github/domain-search-tui",
+  "license": "MIT",
+  "architecture": {
+    "64bit": {
+      "url": "https://github.com/Elephant-on-github/domain-search-tui/releases/download/v1.0.0/domain_search_aggregator_tui-x86_64-pc-windows-msvc.zip",
+      "hash": "TODO"
+    }
+  },
+  "bin": "domain_search_aggregator_tui.exe",
+  "checkver": "github",
+  "autoupdate": {
+    "architecture": {
+      "64bit": {
+        "url": "https://github.com/Elephant-on-github/domain-search-tui/releases/download/v$version/domain_search_aggregator_tui-x86_64-pc-windows-msvc.zip"
+      }
+    }
+  }
+}

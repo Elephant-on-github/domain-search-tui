@@ -50,7 +50,19 @@ grab the right file for your OS from [Releases](https://github.com/Elephant-on-g
 | **macOS** | `domain_search_aggregator_tui-x86_64-apple-darwin.tar.gz` | `tar xzf file.tar.gz && mv domain_search_aggregator_tui /usr/local/bin/` |
 | **Linux** | `domain_search_aggregator_tui-x86_64-unknown-linux-gnu.tar.gz` | same as macOS |
 
-### option 2: cargo install
+### option 2: scoop (windows)
+
+```bash
+scoop install https://raw.githubusercontent.com/Elephant-on-github/domain-search-tui/master/packaging/scoop/domain-search-tui.json
+```
+
+### option 3: homebrew (macos / linux)
+
+```bash
+brew install --formula https://raw.githubusercontent.com/Elephant-on-github/domain-search-tui/master/packaging/homebrew/domain-search-tui.rb
+```
+
+### option 4: cargo install
 
 requires a Rust toolchain (1.75+). takes a minute to compile.
 
@@ -58,7 +70,7 @@ requires a Rust toolchain (1.75+). takes a minute to compile.
 cargo install --git https://github.com/Elephant-on-github/domain-search-tui
 ```
 
-### option 3: build from source
+### option 5: build from source
 
 ```bash
 git clone https://github.com/Elephant-on-github/domain-search-tui

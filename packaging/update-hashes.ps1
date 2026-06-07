@@ -1,0 +1,42 @@
+$tag = $args[0]
+if (-not $tag) {
+  Write-Host "Usage: pwsh update-hashes.ps1 <tag>"
+  Write-Host "  pwsh update-hashes.ps1 v1.0.0"
+  exit 1
+}
+
+$repo = "Elephant-on-github/domain-search-tui"
+$artifacts = @{
+  windows = "domain_search_aggregator_tui-x86_64-pc-windows-msvc.zip"
+  macos   = "domain_search_aggregator_tui-x86_64-apple-darwin.tar.gz"
+  linux   = "domain_search_aggregator_tui-x86_64-unknown-linux-gnu.tar.gz"
+}
+
+Push-Location (Join-Path $PSScriptRoot "..")
+
+foreach ($key in $artifacts.Keys) {
+  $file = $artifacts[$key]
+  $url = "https://github.com/$repo/releases/download/$tag/$file"
+  Write-Host "Downloading $url ..."
+  Invoke-WebRequest -Uri $url -OutFile $file
+}
+
+foreach ($key in $artifacts.Keys) {
+  $file = $artifacts[$key]
+  $hash = (Get-FileHash $file -Algorithm SHA256).Hash.ToLower()
+  Write-Host "$file : $hash"
+  $scoopPath = "packaging/scoop/domain-search-tui.json"
+  $brewPath = "packaging/homebrew/domain-search-tui.rb"
+
+  if ($key -eq "windows") {
+    (Get-Content $scoopPath) -replace '"hash": "TODO"', "`"hash`": `"$hash`"" | Set-Content $scoopPath
+  } elseif ($key -eq "macos") {
+    (Get-Content $brewPath) -replace '(on_macos.*\n.*sha256 ").*(")', "`${1}$hash`$2" | Set-Content $brewPath
+  } elseif ($key -eq "linux") {
+    (Get-Content $brewPath) -replace '(on_linux.*\n.*sha256 ").*(")', "`${1}$hash`$2" | Set-Content $brewPath
+  }
+  Remove-Item $file
+}
+
+Pop-Location
+Write-Host "Hashes updated in packaging/scoop/domain-search-tui.json and packaging/homebrew/domain-search-tui.rb"
