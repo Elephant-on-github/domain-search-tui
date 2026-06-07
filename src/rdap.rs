@@ -5,7 +5,7 @@ fn rdap_client() -> &'static reqwest::Client {
     CLIENT.get_or_init(|| {
         reqwest::Client::builder()
             .timeout(std::time::Duration::from_secs(4))
-            .user_agent("domain-search-tui/0.1")
+            .user_agent("tldscan/0.1")
             .redirect(reqwest::redirect::Policy::limited(5))
             .build()
             .expect("failed to create rdap http client")

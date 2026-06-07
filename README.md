@@ -1,4 +1,4 @@
-# domain-search-tui
+# tldscan
 
 [![Built with OpenCode](https://img.shields.io/badge/Built%20with-OpenCode-000?style=flat-square&labelColor=000&color=555)](https://opencode.ai)
 
@@ -40,43 +40,43 @@ a lil terminal app that checks domain availability across 20 TLDs and shows you 
 
 ## install
 
-### option 1: binary (easiest)
+### binary (easiest)
 
-grab the right file for your OS from [Releases](https://github.com/Elephant-on-github/domain-search-tui/releases), unzip it, and chuck it somewhere in your `PATH`.
+grab the right file for your OS from [Releases](https://github.com/Elephant-on-github/tldscan/releases), unzip it, and chuck it somewhere in your `PATH`.
 
 | platform | file | what to do |
 |---|---|---|
-| **Windows** | `domain-search-tui-x86_64-pc-windows-msvc.zip` | unzip, run `domain-search-tui.exe` |
-| **macOS** | `domain-search-tui-x86_64-apple-darwin.tar.gz` | `tar xzf file.tar.gz && mv domain-search-tui /usr/local/bin/` |
-| **Linux** | `domain-search-tui-x86_64-unknown-linux-gnu.tar.gz` | same as macOS |
+| **Windows** | `tldscan-x86_64-pc-windows-msvc.zip` | unzip, run `tldscan.exe` |
+| **macOS** | `tldscan-x86_64-apple-darwin.tar.gz` | `tar xzf file.tar.gz && mv tldscan /usr/local/bin/` |
+| **Linux** | `tldscan-x86_64-unknown-linux-gnu.tar.gz` | same as macOS |
 
-### option 2: scoop (windows)
-
-```bash
-scoop install https://raw.githubusercontent.com/Elephant-on-github/domain-search-tui/master/packaging/scoop/domain-search-tui.json
-```
-
-### option 3: homebrew (macos / linux)
+### scoop (windows)
 
 ```bash
-brew install --formula https://raw.githubusercontent.com/Elephant-on-github/domain-search-tui/master/packaging/homebrew/domain-search-tui.rb
+scoop install https://raw.githubusercontent.com/Elephant-on-github/tldscan/master/packaging/scoop/tldscan.json
 ```
 
-### option 4: cargo install
+### homebrew (macos / linux)
+
+```bash
+brew install --formula https://raw.githubusercontent.com/Elephant-on-github/tldscan/master/packaging/homebrew/tldscan.rb
+```
+
+### cargo install
 
 requires a Rust toolchain (1.75+). takes a minute to compile.
 
 ```bash
-cargo install --git https://github.com/Elephant-on-github/domain-search-tui
+cargo install --git https://github.com/Elephant-on-github/tldscan
 ```
 
-### option 5: build from source
+### build from source
 
 ```bash
-git clone https://github.com/Elephant-on-github/domain-search-tui
-cd domain-search-tui
+git clone https://github.com/Elephant-on-github/tldscan
+cd tldscan
 cargo build --release
-# binary at ./target/release/domain-search-tui
+# binary at ./target/release/tldscan
 ```
 
 ### requirements

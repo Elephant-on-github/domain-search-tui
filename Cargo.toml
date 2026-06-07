@@ -1,15 +1,16 @@
 [package]
-name = "domain_search_aggregator_tui"
+name = "tldscan"
 version = "0.1.0"
 edition = "2021"
 rust-version = "1.75"
 description = "Terminal app that checks domain availability across 20 TLDs and compares registrar prices"
 license = "MIT"
-repository = "https://github.com/Elephant-on-github/domain-search-tui"
+homepage = "https://github.com/Elephant-on-github/tldscan"
+repository = "https://github.com/Elephant-on-github/tldscan"
 keywords = ["domain", "dns", "tui", "registrar", "pricing"]
 
 [[bin]]
-name = "domain-search-tui"
+name = "tldscan"
 path = "src/main.rs"
 
 [profile.release]

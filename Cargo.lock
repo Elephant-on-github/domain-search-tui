@@ -207,22 +207,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "domain_search_aggregator_tui"
-version = "0.1.0"
-dependencies = [
- "anyhow",
- "crossterm",
- "directories",
- "futures",
- "open",
- "ratatui",
- "reqwest",
- "serde",
- "serde_json",
- "tokio",
-]
-
-[[package]]
 name = "either"
 version = "1.16.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1501,6 +1485,22 @@ checksum = "c8323304221c2a851516f22236c5722a72eaa19749016521d6dff0824447d96d"
 dependencies = [
  "displaydoc",
  "zerovec",
+]
+
+[[package]]
+name = "tldscan"
+version = "0.1.0"
+dependencies = [
+ "anyhow",
+ "crossterm",
+ "directories",
+ "futures",
+ "open",
+ "ratatui",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tokio",
 ]
 
 [[package]]

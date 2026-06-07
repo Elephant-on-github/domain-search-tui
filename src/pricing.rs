@@ -119,7 +119,7 @@ struct CacheFile {
 pub async fn fetch_pricing() -> Result<PricingDb> {
     let client = reqwest::Client::builder()
         .timeout(Duration::from_secs(45))
-        .user_agent("domain-search-tui/0.1")
+        .user_agent("tldscan/0.1")
         .build()?;
 
     let (matrix_resp, index_resp) = tokio::join!(
