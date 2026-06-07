@@ -46,9 +46,9 @@ grab the right file for your OS from [Releases](https://github.com/Elephant-on-g
 
 | platform | file | what to do |
 |---|---|---|
-| **Windows** | `domain_search_aggregator_tui-x86_64-pc-windows-msvc.zip` | unzip, run `domain_search_aggregator_tui.exe` |
-| **macOS** | `domain_search_aggregator_tui-x86_64-apple-darwin.tar.gz` | `tar xzf file.tar.gz && mv domain_search_aggregator_tui /usr/local/bin/` |
-| **Linux** | `domain_search_aggregator_tui-x86_64-unknown-linux-gnu.tar.gz` | same as macOS |
+| **Windows** | `domain-search-tui-x86_64-pc-windows-msvc.zip` | unzip, run `domain-search-tui.exe` |
+| **macOS** | `domain-search-tui-x86_64-apple-darwin.tar.gz` | `tar xzf file.tar.gz && mv domain-search-tui /usr/local/bin/` |
+| **Linux** | `domain-search-tui-x86_64-unknown-linux-gnu.tar.gz` | same as macOS |
 
 ### option 2: scoop (windows)
 
@@ -76,7 +76,7 @@ cargo install --git https://github.com/Elephant-on-github/domain-search-tui
 git clone https://github.com/Elephant-on-github/domain-search-tui
 cd domain-search-tui
 cargo build --release
-# binary at ./target/release/domain_search_aggregator_tui
+# binary at ./target/release/domain-search-tui
 ```
 
 ### requirements

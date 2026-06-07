@@ -7,9 +7,9 @@ if (-not $tag) {
 
 $repo = "Elephant-on-github/domain-search-tui"
 $artifacts = @{
-  windows = "domain_search_aggregator_tui-x86_64-pc-windows-msvc.zip"
-  macos   = "domain_search_aggregator_tui-x86_64-apple-darwin.tar.gz"
-  linux   = "domain_search_aggregator_tui-x86_64-unknown-linux-gnu.tar.gz"
+  windows = "domain-search-tui-x86_64-pc-windows-msvc.zip"
+  macos   = "domain-search-tui-x86_64-apple-darwin.tar.gz"
+  linux   = "domain-search-tui-x86_64-unknown-linux-gnu.tar.gz"
 }
 
 Push-Location (Join-Path $PSScriptRoot "..")
@@ -29,7 +29,7 @@ foreach ($key in $artifacts.Keys) {
   $brewPath = "packaging/homebrew/domain-search-tui.rb"
 
   if ($key -eq "windows") {
-    (Get-Content $scoopPath) -replace '"hash": "TODO"', "`"hash`": `"$hash`"" | Set-Content $scoopPath
+    (Get-Content $scoopPath) -replace '"hash": ".*"', "`"hash`": `"$hash`"" | Set-Content $scoopPath
   } elseif ($key -eq "macos") {
     (Get-Content $brewPath) -replace '(on_macos.*\n.*sha256 ").*(")', "`${1}$hash`$2" | Set-Content $brewPath
   } elseif ($key -eq "linux") {

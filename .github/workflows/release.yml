@@ -30,16 +30,16 @@ jobs:
       - name: package archive
         shell: bash
         run: |
-          NAME=domain_search_aggregator_tui-${{ matrix.target }}
+          NAME=domain-search-tui-${{ matrix.target }}
           if [ "${{ matrix.ext }}" = "zip" ]; then
-            cd target/release && 7z a -tzip ../../$NAME.zip domain_search_aggregator_tui.exe
+            cd target/release && 7z a -tzip ../../$NAME.zip domain-search-tui.exe
           else
-            cd target/release && tar czf ../../$NAME.tar.gz domain_search_aggregator_tui
+            cd target/release && tar czf ../../$NAME.tar.gz domain-search-tui
           fi
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.target }}
-          path: domain_search_aggregator_tui-${{ matrix.target }}.${{ matrix.ext }}
+          path: domain-search-tui-${{ matrix.target }}.${{ matrix.ext }}
 
   release:
     needs: build

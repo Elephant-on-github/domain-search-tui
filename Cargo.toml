@@ -2,6 +2,21 @@
 name = "domain_search_aggregator_tui"
 version = "0.1.0"
 edition = "2021"
+rust-version = "1.75"
+description = "Terminal app that checks domain availability across 20 TLDs and compares registrar prices"
+license = "MIT"
+repository = "https://github.com/Elephant-on-github/domain-search-tui"
+keywords = ["domain", "dns", "tui", "registrar", "pricing"]
+
+[[bin]]
+name = "domain-search-tui"
+path = "src/main.rs"
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
 
 [dependencies]
 ratatui = "0.29"

@@ -146,7 +146,9 @@ fn draw_results(frame: &mut Frame, area: Rect, app: &App) {
                     .bg(Color::DarkGray)
                     .add_modifier(ratatui::style::Modifier::BOLD)
             } else {
-                Style::default().fg(Color::Cyan).add_modifier(ratatui::style::Modifier::BOLD)
+                Style::default()
+                    .fg(Color::Cyan)
+                    .add_modifier(ratatui::style::Modifier::BOLD)
             };
             Cell::from(Line::from(Span::styled(label, style)))
         })
@@ -175,7 +177,9 @@ fn draw_results(frame: &mut Frame, area: Rect, app: &App) {
             let best_style = if best_text == "—" {
                 Style::default().fg(Color::DarkGray)
             } else {
-                Style::default().fg(Color::Green).add_modifier(ratatui::style::Modifier::BOLD)
+                Style::default()
+                    .fg(Color::Green)
+                    .add_modifier(ratatui::style::Modifier::BOLD)
             };
 
             let mut cells = vec![

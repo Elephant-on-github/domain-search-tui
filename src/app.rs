@@ -107,8 +107,7 @@ impl App {
             }
             KeyCode::Down => {
                 if !self.results.is_empty() {
-                    self.selected_row =
-                        (self.selected_row + 1).min(self.results.len() - 1);
+                    self.selected_row = (self.selected_row + 1).min(self.results.len() - 1);
                     self.clamp_scroll();
                 }
             }
@@ -163,27 +162,20 @@ impl App {
         }
         let (slug_owned, domain) = {
             let entry = &self.results[self.selected_row];
-            let slug = entry
-                .best
-                .as_ref()
-                .map(|b| b.slug.clone())
-                .or_else(|| {
-                    entry
-                        .prices
-                        .iter()
-                        .filter_map(|p| Some((p.register?, p.registrar_slug.clone())))
-                        .min_by(|(a, _), (b, _)| {
-                            a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal)
-                        })
-                        .map(|(_, s)| s)
-                });
+            let slug = entry.best.as_ref().map(|b| b.slug.clone()).or_else(|| {
+                entry
+                    .prices
+                    .iter()
+                    .filter_map(|p| Some((p.register?, p.registrar_slug.clone())))
+                    .min_by(|(a, _), (b, _)| a.partial_cmp(b).unwrap_or(std::cmp::Ordering::Equal))
+                    .map(|(_, s)| s)
+            });
             (slug, entry.domain.clone())
         };
         match slug_owned {
             Some(s) => self.open_registrar_url(&s, &domain),
             None => {
-                self.notification =
-                    Some((" No price data to open a registrar ".to_string(), 12));
+                self.notification = Some((" No price data to open a registrar ".to_string(), 12));
             }
         }
     }
@@ -213,8 +205,7 @@ impl App {
                 });
             }
             None => {
-                self.notification =
-                    Some((format!(" No URL for registrar {} ", slug), 12));
+                self.notification = Some((format!(" No URL for registrar {} ", slug), 12));
             }
         }
     }

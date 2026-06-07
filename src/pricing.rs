@@ -166,8 +166,16 @@ fn build_db(
     if let Some(index) = index {
         for row in index.rows {
             let entry = BestEntry {
-                slug: row.register.as_ref().map(|r| r.slug.clone()).unwrap_or_default(),
-                name: row.register.as_ref().map(|r| r.name.clone()).unwrap_or_default(),
+                slug: row
+                    .register
+                    .as_ref()
+                    .map(|r| r.slug.clone())
+                    .unwrap_or_default(),
+                name: row
+                    .register
+                    .as_ref()
+                    .map(|r| r.name.clone())
+                    .unwrap_or_default(),
                 price: row.register.as_ref().and_then(|r| r.usd),
             };
             best_by_tld.insert(row.tld.to_lowercase(), entry);
@@ -210,8 +218,7 @@ pub fn load_cached_pricing() -> Option<PricingDb> {
         return None;
     }
 
-    let fetched_at =
-        SystemTime::UNIX_EPOCH + Duration::from_secs(cache.fetched_at_epoch);
+    let fetched_at = SystemTime::UNIX_EPOCH + Duration::from_secs(cache.fetched_at_epoch);
     Some(build_db(cache.matrix, cache.index, fetched_at))
 }
 
