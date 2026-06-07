@@ -10,20 +10,50 @@ permissions:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         include:
           - os: ubuntu-latest
             target: x86_64-unknown-linux-gnu
+            ext: tar.gz
           - os: macos-latest
             target: x86_64-apple-darwin
+            ext: tar.gz
           - os: windows-latest
             target: x86_64-pc-windows-msvc
+            ext: zip
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - uses: taiki-e/upload-rust-binary-action@v1
+      - uses: Swatinem/rust-cache@v2
+      - run: cargo build --release
+      - name: package archive
+        shell: bash
+        run: |
+          NAME=domain_search_aggregator_tui-${{ matrix.target }}
+          if [ "${{ matrix.ext }}" = "zip" ]; then
+            cd target/release && 7z a -tzip ../../../$NAME.zip domain_search_aggregator_tui.exe
+          else
+            cd target/release && tar czf ../../../$NAME.tar.gz domain_search_aggregator_tui
+          fi
+      - uses: actions/upload-artifact@v4
         with:
-          bin: domain_search_aggregator_tui
-          target: ${{ matrix.target }}
-          tar: all
-          zip: windows
+          name: ${{ matrix.target }}
+          path: domain_search_aggregator_tui-${{ matrix.target }}.${{ matrix.ext }}
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+      - name: create release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            artifacts/*/* \
+            --repo "${{ github.repository }}" \
+            --title "${{ github.ref_name }}" \
+            --generate-notes
