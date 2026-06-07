@@ -40,13 +40,37 @@ a lil terminal app that checks domain availability across 20 TLDs and shows you 
 
 ## install
 
-grab a binary from [Releases](https://github.com/Elephant-on-github/domain-search-tui/releases), or build it yourself:
+### option 1: binary (easiest)
+
+grab the right file for your OS from [Releases](https://github.com/Elephant-on-github/domain-search-tui/releases), unzip it, and chuck it somewhere in your `PATH`.
+
+| platform | file | what to do |
+|---|---|---|
+| **Windows** | `domain_search_aggregator_tui-x86_64-pc-windows-msvc.zip` | unzip, run `domain_search_aggregator_tui.exe` |
+| **macOS** | `domain_search_aggregator_tui-x86_64-apple-darwin.tar.gz` | `tar xzf file.tar.gz && mv domain_search_aggregator_tui /usr/local/bin/` |
+| **Linux** | `domain_search_aggregator_tui-x86_64-unknown-linux-gnu.tar.gz` | same as macOS |
+
+### option 2: cargo install
+
+requires a Rust toolchain (1.75+). takes a minute to compile.
 
 ```bash
 cargo install --git https://github.com/Elephant-on-github/domain-search-tui
 ```
 
-requirements: Rust 1.75+, a terminal that likes ratatui (most do), and an internet connection for the first run (prices get cached after that).
+### option 3: build from source
+
+```bash
+git clone https://github.com/Elephant-on-github/domain-search-tui
+cd domain-search-tui
+cargo build --release
+# binary at ./target/release/domain_search_aggregator_tui
+```
+
+### requirements
+
+- a terminal that supports ratatui (most do — Windows Terminal, iTerm2, gnome-terminal, etc.)
+- internet on first run (pricing data gets cached for ~24h after that)
 
 ## data sources
 
