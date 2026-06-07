@@ -1,5 +1,7 @@
 # domain-search-tui
 
+[![Built with OpenCode](https://img.shields.io/badge/Built%20with-OpenCode-000?style=flat-square&labelColor=000&color=555)](https://opencode.ai)
+
 a lil terminal app that checks domain availability across 20 TLDs and shows you who's got the best price — all in one table. no api keys needed.
 
 ```
